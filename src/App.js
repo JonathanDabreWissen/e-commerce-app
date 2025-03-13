@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Product from './pages/Product';
+import { BrowserRouter, Routes, Route } from "react-router";
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="-mt-8 pt-10 px-20 bg-[#e5e5e5] pb-48 ">
+      <h1 className='text-4xl font-semibold mt-6 mb-10'>Flipazon Admin</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Product/>} />
+          <Route path="/random" element={<p>Hi random</p>} />
+        </Routes>
+      </BrowserRouter>
+      {/* <ProductCard name={"Electric Guitar"} category={"Musical Instrument"} price={29999} vendor_id={107} brand={"Fender"} rating={4.6}/> */}
     </div>
   );
 }
