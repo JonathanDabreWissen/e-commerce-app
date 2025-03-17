@@ -27,8 +27,8 @@ const Inventory = () => {
     
     // Convert input values to the correct types
     const newItem = {
-      id: parseInt(newId),
-      vendors: newVendors.split(',').map(vendor => parseInt(vendor.trim())),
+      id: newId,
+      vendors: newVendors.split(',').map(vendor => vendor.trim()),
       stock: parseInt(newStock)
     };
     
@@ -62,8 +62,8 @@ const Inventory = () => {
     e.preventDefault();
     
     const updatedItem = {
-      id: parseInt(editId),
-      vendors: editVendors.split(',').map(vendor => parseInt(vendor.trim())),
+      id: editId,
+      vendors: editVendors.split(',').map(vendor => vendor.trim()),
       stock: parseInt(editStock)
     };
 

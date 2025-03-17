@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import useGetData from "../hooks/useGetData";
 import useAddData from "../hooks/useAddData";
 import useUpdateData from "../hooks/useUpdateData";
@@ -7,6 +7,7 @@ import useDeleteData from "../hooks/useDeleteData";
 const Vendor = () => {
   // State for the form
   const [formData, setFormData] = useState({
+    id: "",
     name: "",
     location: "",
   });
@@ -38,14 +39,14 @@ const Vendor = () => {
       await addData(formData);
     }
     
-    setFormData({ name: "", location: "" });
+    setFormData({ id: "", name: "", location: "" });
     setShowForm(false);
     refetch();
   };
 
   // Handle edit vendor
   const handleEdit = (vendor) => {
-    setFormData({ name: vendor.name, location: vendor.location });
+    setFormData({ id: vendor.id, name: vendor.name, location: vendor.location });
     setIsEditing(true);
     setEditId(vendor.id);
     setShowForm(true);
@@ -59,24 +60,6 @@ const Vendor = () => {
     }
   };
 
-  // Show loading state
-  if (loadingVendors) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
-
-  // Show error state
-  if (fetchError) {
-    return (
-      <div className="bg-red-100 text-red-700 p-4 rounded-md">
-        Error loading vendors: {fetchError}
-      </div>
-    );
-  }
-
   return (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
@@ -84,7 +67,7 @@ const Vendor = () => {
         <button
           onClick={() => {
             setIsEditing(false);
-            setFormData({ name: "", location: "" });
+            setFormData({ id: "", name: "", location: "" });
             setShowForm(!showForm);
           }}
           className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
@@ -100,6 +83,21 @@ const Vendor = () => {
             {isEditing ? "Edit Vendor" : "Add New Vendor"}
           </h2>
           <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2" htmlFor="id">
+                Vendor ID
+              </label>
+              <input
+                type="text"
+                id="id"
+                name="id"
+                value={formData.id}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+                disabled={isEditing} // Prevent ID change while editing
+              />
+            </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2" htmlFor="name">
                 Vendor Name
