@@ -1,21 +1,24 @@
-import Product from './pages/Product';
-import { BrowserRouter, Routes, Route } from "react-router";
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Product from "./pages/Product";
+import Vendor from "./pages/Vendor";
+import Inventory from "./pages/Inventory";
 
 
 
 function App() {
   return (
-    <div className="-mt-8 pt-10 px-20 bg-[#e5e5e5] pb-48 ">
-      <h1 className='text-4xl font-semibold mt-6 mb-10'>Flipazon Admin</h1>
-      <BrowserRouter>
+    <Router>
+      <Navbar />
+      <div className=" px-20">
         <Routes>
-          <Route path="/" element={<Product/>} />
-          <Route path="/random" element={<p>Hi random</p>} />
+          <Route path="/products" element={<Product />} />
+          <Route path="/vendors" element={<Vendor/>} />
+          <Route path="/inventory" element={<Inventory/>} />
+          <Route path="/orders" element={<h1>Orders</h1>} />
         </Routes>
-      </BrowserRouter>
-      {/* <ProductCard name={"Electric Guitar"} category={"Musical Instrument"} price={29999} vendor_id={107} brand={"Fender"} rating={4.6}/> */}
-    </div>
+      </div>
+    </Router>
   );
 }
 
