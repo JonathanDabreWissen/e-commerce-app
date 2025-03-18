@@ -30,7 +30,6 @@ const DisplayProduct = ({ onEdit }) => {
                         <th className="border p-2 text-left ">Category</th>
                         <th className="border p-2 text-left ">Price</th>
                         <th className="border p-2 text-left ">Brand</th>
-                        <th className="border p-2 text-left ">Stock</th>
                         <th className="border p-2 text-left ">Rating</th>
                         <th className="border p-2 text-left ">Actions</th>
                     </tr>
@@ -43,7 +42,6 @@ const DisplayProduct = ({ onEdit }) => {
                             <td className="border p-2">{product.category}</td>
                             <td className="border p-2">{product.price}</td>
                             <td className="border p-2">{product.brand}</td>
-                            <td className="border p-2">{product.stock}</td>
                             <td className="border p-2">{product.rating}</td>
                             <td className="border p-2 flex gap-2">
                                 <button
